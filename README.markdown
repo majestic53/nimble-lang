@@ -33,7 +33,7 @@ Variables in Nimble can be assigned to any type, at any time during execution, b
 set: foo, 10;						# integer assignment
 set: foo, 3.14;						# float assignment
 set: foo, 'bar';					# string assignment
-set: foo(bar) { … };				# function pointer assignment
+set: foo(bar) { … };					# function pointer assignment
 ```
 
 ###Statically scoped variables
