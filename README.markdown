@@ -1,8 +1,6 @@
 Nimble Programming Language
 ========
 
-A new and exciting general-purpose programming language.
-
 1. [Introduction](https://github.com/majestic53/nimble-lang#introduction)
 2. [Features](https://github.com/majestic53/nimble-lang#features)
 	* [Dynamically typed variables](https://github.com/majestic53/nimble-lang#dynamically-typed-variables)
@@ -20,17 +18,12 @@ A new and exciting general-purpose programming language.
 Introduction
 ========
 
-High-level programming languages have been the norm in the computing world for many decades, and many paradigms have been created to accommodate them. One of the most popular programming models is that of imperative programming languages. Following this tradition, the Nimble programming language offers a refreshing look into the imperative programming world.
-
-One might ask: What makes the Nimble language different from other imperative languages, such as C? The answer to this question lies in the new and exciting feature set available in Nimble. 
-
-Nimble offers a variety of new programming concepts, not traditionally found in imperative languages. On top of a new, simpler syntax, Nimble offers: dynamic variable typing, native list
-support, multiple inline assignments, the ability to create nested functions, and much more; All while never losing any of the more traditional imperative features that make that model so popular.
+Nimble is a new and exciting general-purpose scripting language.
 
 Features
 ======
 
-Nimble contains a variety of new features that the imperative programmer might be interested in. With these features included, Nimble can be thought of as a language that spans multiple paradigms.
+Nimble contains a variety of interesting features. With these features included, Nimble can be thought of as a language that spans multiple paradigms.
 
 ###Dynamically typed variables
 
