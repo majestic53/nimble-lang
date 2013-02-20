@@ -30,9 +30,9 @@ Nimble contains a variety of interesting features. With these features included,
 Variables in Nimble can be assigned to any type, at any time during execution, by using the set keyword. This includes the types: integer, float, string, function pointer, and list, interchangeably.
 
 ```
-set: foo, 10;						# integer assignment
-set: foo, 3.14;						# float assignment
-set: foo, 'bar';					# string assignment
+set: foo, 10;							# integer assignment
+set: foo, 3.14;							# float assignment
+set: foo, 'bar';						# string assignment
 set: foo(bar) { … };					# function pointer assignment
 ```
 
@@ -41,7 +41,7 @@ set: foo(bar) { … };					# function pointer assignment
 Variables in Nimble are statically scoped by default. This means that if a variable is not found in the current scope, all scopes up to the global scope will be searched. To access a variable in a higher scope, use the glob keyword.
 
 ```
-set: foo, glob: bar;				# foo assigned to global variable bar
+set: foo, glob: bar;					# foo assigned to global variable bar
 ```
 
 ###Nested function support
@@ -50,14 +50,14 @@ Nimble supports nested functions. That is, functions contained in other function
 
 ```
 set: bar() {
-	set: nested_bar() {				# nested function
+	set: nested_bar() {					# nested function
 		set: ret, 'bar';
 	} ret;
 
 	set: ret, nested_bar();
 } ret;
 
-out: 'foo' + bar();					# print “foobar” to output stream
+out: 'foo' + bar();						# print “foobar” to output stream
 ```
 
 ###Multiple inline variable assignments
@@ -71,9 +71,9 @@ set: foobar() {
 } foo, bar;
 
 
-set: (foo, bar), foobar();			# function call assignments
+set: (foo, bar), foobar();				# function call assignments
 
-set: (foo, bar), ['foo', 'bar'];	# multiple assignments inline
+set: (foo, bar), ['foo', 'bar'];		# multiple assignments inline
 ```
 
 ###Native list support
@@ -81,10 +81,10 @@ set: (foo, bar), ['foo', 'bar'];	# multiple assignments inline
 Nimble has support for a native list data-type. A variable will automatically become a list if any list operation is performed upon it. With the built-in list operators, lists can perform stack and queue related tasks, as well as be indexed into like a normal array.
 	
 ```
-fpush: a, 2 + 3;					# push expression (2 + 3) onto list a
-set: b, fpop: a;					# pop front of list a, assign to b
-out: size: a;						# print size of list a to output stream
-out: b[0];							# print value at index 0 in list b
+fpush: a, 2 + 3;						# push expression (2 + 3) onto list a
+set: b, fpop: a;						# pop front of list a, assign to b
+out: size: a;							# print size of list a to output stream
+out: b[0];								# print value at index 0 in list b
 ```
 
 Grammar
@@ -211,7 +211,7 @@ set: is_prime(value) {
 		set: stat, false; 
 	}
 	
-		range: lte? trial, sqrt(value), prei: trial { # sqrt() imported from math.nb
+		range: lte? trial, sqrt(value), prei: trial {	# sqrt() imported from math.nb
 		
 			if: eq? value % trial, 0 {
 				set: stat, false;
