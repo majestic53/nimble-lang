@@ -53,7 +53,7 @@ set: foo, glob: bar;				# foo assigned to global variable bar
 
 ###Nested function support
 
-Nimble supports nested functions. That is, functions contained in other function scopes. Nested functions are only available from within the functional scope in which they are called.
+Nimble supports nested functions. That is, functions contained in other function scopes.
 
 ```
 set: bar() {
@@ -69,7 +69,7 @@ out: 'foo' + bar();					# print “foobar” to output stream
 
 ###Multiple inline variable assignments
 
-Multiple Nimble variables can be assigned at once using the set keyword. To leverage this feature, functions in Nimble can return multiple values at once. The only requirement is that the return value count must match the assignment.
+Multiple variables can be assigned at once using the set keyword. To leverage this feature, functions in Nimble can return multiple values at once. The only requirement is that the return value count must match the assignment count.
 
 ```
 set: foobar() {
