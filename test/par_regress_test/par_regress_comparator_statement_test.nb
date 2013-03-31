@@ -1,0 +1,9 @@
+# comparator statement
+if: eq? a, b {}
+if: neq? a, b {}
+if: lt? a, b {}
+if: lte? a, b {}
+if: gt? a, b {}
+if: gte? a, b {}
+if: and? a, b {}
+if: or? a, b {}

@@ -1,0 +1,7 @@
+# function assignments
+set: a(b) {};
+set: (a, b)(c) {};
+set: a[b](c) {};
+set: (a, b)[c](d) {};
+set: a, b[x](d, e);
+set: (a, b), c[x](d, e);

@@ -1,0 +1,4 @@
+# binary operator
+set: a, b band c;
+set: a, b bor c;
+set: a, b bxor c;

@@ -1,0 +1,9 @@
+# comparator operator
+eq
+gt
+gte
+and
+or
+lt
+lte
+neq

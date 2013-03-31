@@ -1,0 +1,6 @@
+# conditional statements
+if: eq? a, b {}
+ifelse: eq? a, b {}}
+range: eq? a, b, prei: c; {}
+until: {} eq? a, b;
+while: eq? a, b {}

@@ -1,0 +1,13 @@
+# iterator operator
+posd: a;
+posi: a;
+pred: a;
+prei: a;
+posd: (a, b);
+posi: (a, b);
+pred: (a, b);
+prei: (a, b);
+set: a, posd: b;
+set: a, posi: b;
+set: a, pred: b;
+set: a, prei: b;

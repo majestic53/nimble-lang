@@ -1,0 +1,3 @@
+# call operator
+set: a(x) { set: x, x + 1; } x;
+call: a(1);

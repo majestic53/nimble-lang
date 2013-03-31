@@ -1,0 +1,3 @@
+# conversion operator
+set: a, int: b;
+set: a, float: b;

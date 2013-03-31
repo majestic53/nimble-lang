@@ -1,0 +1,5 @@
+# constant
+endl
+false
+null
+true

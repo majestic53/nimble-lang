@@ -1,0 +1,12 @@
+# Nimble Tester -- test.nb
+
+set: name, empty;
+
+ifelse: gte? args, 1 {
+	set: name, arg: 0;
+}
+	use: '..\..\..\test\test_helper.nb';
+}
+
+out: stdout, 'Hello ' + name + endl;
+in: stdin;

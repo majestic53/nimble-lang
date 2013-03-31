@@ -1,0 +1,4 @@
+# stream operator
+stdin
+stdout
+file

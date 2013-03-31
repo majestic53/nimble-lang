@@ -1,0 +1,36 @@
+# set operator
+
+# simple set
+set: a, 10;
+out: stdout, '(1) a = ' + a + endl;
+
+set: b, a;
+out: stdout, '(2) b = ' + b + endl;
+
+set: c(x) { set: y, x; } y;
+out: stdout, '(3) c(4) = ' + c(4) + endl;
+
+set: c[1](x) { set: z, x * x; } z;
+out: stdout, '(4) c(4) = ' + c[1](4) + endl;
+
+# compound set
+set: (a, b), [2, 4];
+out: stdout, '(5) a = ' + a + ', b = ' + b + endl;
+
+set: c, 4;
+set: c[1], 16;
+set: (a, b), c[1];
+out: stdout, '(6) a = ' + a + ', b = ' + b + endl;
+
+set: c(x) { set: z, x * x * x; } z;
+set: (d, e), c(4);
+out: stdout, '(7) d = ' + d + ', e = ' + e + endl;
+
+set: c(x) { set: y, x * x; set: z, y - x; } y, z;
+set: c[1](x) { set: y, x * x * x; set: z, x * 3; } y, z;
+set: (d, e), c(4);
+out: stdout, '(8a) d = ' + d + ', e = ' + e + endl;
+set: (d, e), c[0](4);
+out: stdout, '(8b) d = ' + d + ', e = ' + e + endl;
+set: (d, e), c[1](4);
+out: stdout, '(8c) d = ' + d + ', e = ' + e + endl;

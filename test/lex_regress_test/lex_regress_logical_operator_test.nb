@@ -1,0 +1,6 @@
+# logical operator
+ceil
+flr
+rnd
+shl
+shr

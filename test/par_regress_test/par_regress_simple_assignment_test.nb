@@ -1,0 +1,5 @@
+# simple assignments
+set: a, b;
+set: a, b + c;
+set: (a, b), c;
+set: a[c], b;

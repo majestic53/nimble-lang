@@ -1,0 +1,13 @@
+# expression
+set: a, b;
+set: a, d * (b + c);
+set: a, (b + c) * d;
+set: a, (b + c) * ~d;
+set: a, ~(b + c) * d;
+set: a, d * ~(b + c);
+set: a, b * c / d % e bxor f bor g band h;
+set: a, b(c);
+set: a, b[c];
+set: a, 0;
+set: a, 0.0;
+set: a, 'b';

@@ -1,0 +1,3 @@
+# using statement
+use: 'a';
+use: 'a' + b;

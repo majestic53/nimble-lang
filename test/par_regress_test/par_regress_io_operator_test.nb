@@ -1,0 +1,14 @@
+# io operations
+out: stdout, a;
+in: stdin;
+exec: a;
+out: file, b, a;
+out: file: append, b, a;
+out: file: bin, b, a;
+out: file: trunc, b, a;
+out: file: (append, bin, trunc), b, a;
+in: file, a;
+in: file: bin, a;
+set: a, in: stdin;
+set: a, in: file, b;
+set: a, in: file: bin, b;

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\arg.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sch.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ppt.cpp">
+      <Filter>prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ppt_ext.cpp">
+      <Filter>prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="..\ppt_type.cpp">
+      <Filter>prompt\type</Filter>
+    </ClCompile>
+    <ClCompile Include="..\in_arg.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{fbd336fd-4888-4af6-bfc1-8a3d5e7dcc92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\type">
+      <UniqueIdentifier>{f8422426-da7e-47a6-94a8-b2797a9708c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="prompt">
+      <UniqueIdentifier>{ed3be47b-d3c2-4c40-99d1-9305c55df22e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="prompt\type">
+      <UniqueIdentifier>{dcc033e3-6b61-4308-9ec1-cc2d39cb812f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\arg_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\arg.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sch.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sch_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ppt_type.h">
+      <Filter>prompt\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ppt_ext_type.h">
+      <Filter>prompt\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ppt.h">
+      <Filter>prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ppt_ext.h">
+      <Filter>prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\in_arg_type.hpp">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\in_arg.h">
+      <Filter>common</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

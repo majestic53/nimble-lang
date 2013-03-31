@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{2048631c-cd0f-4b2f-bdff-0d841a2ddee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lexer">
+      <UniqueIdentifier>{b0a06ee4-0af3-4afc-b984-ba77d35c8f7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="parser">
+      <UniqueIdentifier>{f148a9bb-44fc-497e-a4c5-92d21fe95732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="executor">
+      <UniqueIdentifier>{2780c6dc-b9dc-4429-b206-f86bd3df422c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\type">
+      <UniqueIdentifier>{068c8d80-207d-41a4-b21f-30027cc5e887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="executor\type">
+      <UniqueIdentifier>{5244b6cb-3539-4201-a509-92435ac5f532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lexer\type">
+      <UniqueIdentifier>{8b977d7b-823e-4fca-925a-9957e78b5550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="parser\type">
+      <UniqueIdentifier>{e5457943-26bd-4789-8cae-aa273bfe7174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{575c3510-9138-4b8f-b36f-2df9f159b370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\type">
+      <UniqueIdentifier>{41436ba1-c51f-4322-a580-750dfcbb472f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\cont.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tok.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lang.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lex_base.cpp">
+      <Filter>lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lex_ext.cpp">
+      <Filter>lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\par.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\par_ext.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\exe.cpp">
+      <Filter>executor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\exe_ext.cpp">
+      <Filter>executor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lex.cpp">
+      <Filter>lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\test\regress.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\test\sanity.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\cont.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lang.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\node.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tok.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tree.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tree_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tok_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\node_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cont_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\trace.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lex.h">
+      <Filter>lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lex_base.h">
+      <Filter>lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lex_ext.h">
+      <Filter>lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lex_base_type.h">
+      <Filter>lexer\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lex_ext_type.h">
+      <Filter>lexer\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lex_type.h">
+      <Filter>lexer\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\par_ext_type.h">
+      <Filter>parser\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\par_type.h">
+      <Filter>parser\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\par.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\par_ext.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\exe_ext_type.h">
+      <Filter>executor\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\exe_type.h">
+      <Filter>executor\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\exe.h">
+      <Filter>executor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\exe_ext.h">
+      <Filter>executor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\link_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\link.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\list_type.h">
+      <Filter>common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\list.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ver.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\test\regress_type.h">
+      <Filter>test\type</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\test\regress.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\test\sanity.h">
+      <Filter>test</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

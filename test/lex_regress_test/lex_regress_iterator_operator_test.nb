@@ -1,0 +1,5 @@
+# iterator operator
+posd
+posi
+prei
+pred

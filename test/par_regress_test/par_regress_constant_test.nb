@@ -1,0 +1,5 @@
+# constants
+set: a, endl;
+set: a, false;
+set: a, null;
+set: a, true;

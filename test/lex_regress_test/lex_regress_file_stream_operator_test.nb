@@ -1,0 +1,4 @@
+# file stream operator
+append
+bin
+trunc

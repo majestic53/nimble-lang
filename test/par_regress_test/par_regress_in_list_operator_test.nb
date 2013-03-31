@@ -1,0 +1,5 @@
+# in-list operator
+fpush: a, b;
+lpush: a, b;
+fpush: (a, b), c;
+lpush: (a, b), c;

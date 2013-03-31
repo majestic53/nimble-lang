@@ -1,0 +1,10 @@
+# out-list operator
+fpop: a;
+lpop: a;
+size: a;
+fpop: (a, b);
+lpop: (a, b);
+size: (a, b);
+set: a, fpop: b;
+set: a, lpop: b;
+set: a, size: b;

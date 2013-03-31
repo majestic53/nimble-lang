@@ -1,0 +1,3 @@
+# compound assignments
+set: (a, b), [c, d];
+set: (a, b)[c], [d, e];
