@@ -218,6 +218,16 @@ _exe::has_next(void)
 void 
 _exe::initialize(
 	const std::string &input,
+	bool is_file,
+	bool clear_scope
+	)
+{
+	initialize(input, tok_vector(), is_file, clear_scope);
+}
+
+void 
+_exe::initialize(
+	const std::string &input,
 	const tok_vector &arguments,
 	bool is_file,
 	bool clear_scope

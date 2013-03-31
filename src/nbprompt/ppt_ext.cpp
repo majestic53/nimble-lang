@@ -202,14 +202,8 @@ ppt_ext_hdl_gen_command(
 {
 	TRACE_EVENT("+ppt_ext_hdl_gen_command", TRACE_TYPE_INFORMATION);
 
-	par parser;
-
 	if(prompt) {
-		parser.set_action(par_config_lexer, PAR_ACTION_CONFIG_LEXER);
-		parser.set_enumeration_action(par_enum_statement, PAR_ENUM_ACTION_STATEMENT);
-		parser.initialize(arguments.front().get_text(), false);
-		parser.enumerate();
-		ppt_exe.import_statements(parser.export_statements());
+		ppt_exe.initialize(arguments.front().get_text(), false, false);
 		ppt_exe.evaluate();
 	} else {
 		TRACE_EVENT("Invalid prompt parameter!", TRACE_TYPE_ERROR);

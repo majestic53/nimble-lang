@@ -111,6 +111,18 @@ typedef class _exe :
 		/*
 		 * Initialize executor with given input
 		 * @param input input string reference
+		 * @param is_file true if input is file path, false otherwise
+		 * @param clear_scope true to clear executor scope, false otherwise
+		 */
+		void initialize(
+			const std::string &input,
+			bool is_file,
+			bool clear_scope
+			);
+
+		/*
+		 * Initialize executor with given input
+		 * @param input input string reference
 		 * @param arguments input arguments
 		 * @param is_file true if input is file path, false otherwise
 		 * @param clear_scope true to clear executor scope, false otherwise
