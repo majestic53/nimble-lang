@@ -105,7 +105,7 @@ static const std::string PPT_ARG_STR_0[] = {
 };
 
 static const std::string PPT_ARG_STR_1[] = {
-	"file-in", "help", "input", "interactive", "version",
+	"file-input", "help", "input", "interactive", "version",
 };
 
 static const std::string PPT_ARG_DESC_STR[] = {

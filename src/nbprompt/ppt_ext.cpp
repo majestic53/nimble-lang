@@ -51,7 +51,7 @@ ppt_ext_hdl_arguments(
 
 	size_t type;
 	in_arg result;
-	std::string output, input, arg_input;
+	std::string output, input;
 	bool done = false, flag[MAX_PPT_ARG_TYPE + 1];
 	std::vector<std::string>::const_iterator arg_iter = arguments.begin();
 
@@ -80,22 +80,23 @@ ppt_ext_hdl_arguments(
 						++arg_iter;
 
 						if(arg_iter == arguments.end()) {
-							THROW_PPT_EXT_EXC_W_MESS(ARG_FLAG_0 << PPT_ARG_STRING_0(PPT_ARG_IN) << " (" << ARG_FLAG_1 << PPT_ARG_STRING_1(PPT_ARG_IN) << ")", PPT_EXT_EXC_MISSING_INPUT);
+							THROW_PPT_EXT_EXC_W_MESS(ARG_FLAG_0 << PPT_ARG_STRING_0(type) << " (" << ARG_FLAG_1 << PPT_ARG_STRING_1(type) << ")", PPT_EXT_EXC_MISSING_INPUT);
 						}
-						input = *arg_iter;
 						result.set_as_file(type == PPT_ARG_FILE_IN);
-						result.set_input(input);
+						result.set_input(*arg_iter);
 						result.set_signal(PPT_ARG_SIG_INPUT);
+						++arg_iter;
 
 						while(arg_iter != arguments.end()) {
-							arg_input = *arg_iter++;
+							input = *arg_iter;
 
 							if(arg_iter == arguments.end()
-									|| IS_ARGUMENT(arg_input)) {
+									|| IS_ARGUMENT(input)) {
 								break;
 							} else {
-								result.add_argument_back(arg(arg_input, ARG_TYPE_STRING));
+								result.add_argument_back(arg(*arg_iter, ARG_TYPE_STRING));
 							}
+							++arg_iter;
 						}
 						done = true;
 						break;
