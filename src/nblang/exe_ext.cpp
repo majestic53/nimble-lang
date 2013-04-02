@@ -488,16 +488,24 @@ exe_eval_conditional(
 				signal = exe_eval_statement_list(statement, context, stack);
 				context.move_parent();
 				context.remove_children();
-				statement.move_parent();
-
-				if(signal == EXE_SIG_BREAK) {
+				
+				if(signal == EXE_SIG_BREAK
+						|| signal == EXE_SIG_EXIT) {
 					break;
 				} else if(signal == EXE_SIG_CONTINUE) {
 					continue;
 				}
+				statement.move_parent();
 				statement.move_child(RANGE_COND_STMT_CHILD);
 				statement.move_child(RANGE_STMT_COND_EXPR_LIST_CHILD);
-				exe_eval_statement_list(statement, context, stack);
+				signal = exe_eval_statement_list(statement, context, stack);
+
+				if(signal == EXE_SIG_BREAK
+						|| signal == EXE_SIG_EXIT) {
+					break;
+				} else if(signal == EXE_SIG_CONTINUE) {
+					continue;
+				}
 				statement.move_parent();
 				statement.move_parent();
 				statement.move_child(RANGE_COND_STMT_CHILD);
@@ -517,7 +525,8 @@ exe_eval_conditional(
 				context.move_parent();
 				context.remove_children();
 
-				if(signal == EXE_SIG_BREAK) {
+				if(signal == EXE_SIG_BREAK
+						|| signal == EXE_SIG_EXIT) {
 					break;
 				} else if(signal == EXE_SIG_CONTINUE) {
 					statement.move_parent();
@@ -542,7 +551,8 @@ exe_eval_conditional(
 				context.move_parent();
 				context.remove_children();
 
-				if(signal == EXE_SIG_BREAK) {
+				if(signal == EXE_SIG_BREAK
+						|| signal == EXE_SIG_EXIT) {
 					break;
 				} else if(signal == EXE_SIG_CONTINUE) {
 					statement.move_parent();
@@ -714,7 +724,8 @@ exe_eval_control(
 			signal = EXE_SIG_CONTINUE;
 			break;
 		case CONTROL_TYPE_EXIT:
-			exit(EXE_SIG_EXIT);
+			signal = EXE_SIG_EXIT;
+			//exit(EXE_SIG_EXIT);
 			break;
 	}
 
@@ -872,6 +883,9 @@ extern void exe_eval_expression_helper(
 						case LOGICAL_OPERATOR_TYPE_FLOOR:
 							stack.top().front().get().floor();
 							break;
+						case LOGICAL_OPERATOR_TYPE_RANDOM:
+							stack.top().front().get().randomize();
+							break;
 						case LOGICAL_OPERATOR_TYPE_ROUND:
 							stack.top().front().get().round();
 							break;
@@ -938,7 +952,7 @@ extern void exe_eval_expression_helper(
 
 				if(IS_TYPE_T(stack.top().front().get(), TOKEN_TYPE_VAR_STRING)
 						&& IS_SUBTYPE_T(statement.get(), CONSTANT_TYPE_EMPTY)) {
-					stack.top().front().get().get_text().clear();
+					stack.top().front().get().set_value(std::string());
 				}
 				break;
 			case TOKEN_TYPE_FLOAT:
@@ -1239,7 +1253,7 @@ exe_eval_iterator(
 				if(to_stack
 						&& subtype == ITERATOR_OPERATOR_TYPE_POST_DECREMENT) {
 					ss << (type == TOKEN_TYPE_FLOAT ? f_val : i_val);
-					value_stmt_vec.at(offset).get().get_text() = ss.str();
+					value_stmt_vec.at(offset).get().set_value(ss.str());
 					stack.push(value_stmt_vec);
 				}
 				(type == TOKEN_TYPE_FLOAT ? --f_val : --i_val);
@@ -1247,7 +1261,7 @@ exe_eval_iterator(
 				if(!to_stack
 						|| subtype == ITERATOR_OPERATOR_TYPE_PRE_DECREMENT) {
 					ss << (type == TOKEN_TYPE_FLOAT ? f_val : i_val);
-					value_stmt_vec.at(offset).get().get_text() = ss.str();
+					value_stmt_vec.at(offset).get().set_value(ss.str());
 					stack.push(value_stmt_vec);
 				}
 				break;
@@ -1257,7 +1271,7 @@ exe_eval_iterator(
 				if(to_stack
 						&& subtype == ITERATOR_OPERATOR_TYPE_POST_INCREMENT) {
 					ss << (type == TOKEN_TYPE_FLOAT ? f_val : i_val);
-					value_stmt_vec.at(offset).get().get_text() = ss.str();
+					value_stmt_vec.at(offset).get().set_value(ss.str());
 					stack.push(value_stmt_vec);
 				}
 				(type == TOKEN_TYPE_FLOAT ? ++f_val : ++i_val);
@@ -1265,7 +1279,7 @@ exe_eval_iterator(
 				if(!to_stack
 						|| subtype == ITERATOR_OPERATOR_TYPE_PRE_INCREMENT) {
 					ss << (type == TOKEN_TYPE_FLOAT ? f_val : i_val);
-					value_stmt_vec.at(offset).get().get_text() = ss.str();
+					value_stmt_vec.at(offset).get().set_value(ss.str());
 					stack.push(value_stmt_vec);
 				}
 				break;
@@ -1273,7 +1287,7 @@ exe_eval_iterator(
 		ss.clear();
 		ss.str(std::string());
 		ss << (type == TOKEN_TYPE_FLOAT ? f_val : i_val);
-		value_stmt_vec.at(offset).get().get_text() = ss.str();
+		value_stmt_vec.at(offset).get().set_value(ss.str());
 
 		if(index_ref) {
 			exe_cont_set_value(statement.get().get_text(), value_stmt_vec.at(offset), context, offset, false);

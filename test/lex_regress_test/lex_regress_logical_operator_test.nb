@@ -1,6 +1,7 @@
 # logical operator
 ceil
 flr
+rdm
 rnd
 shl
 shr

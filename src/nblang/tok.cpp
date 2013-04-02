@@ -44,7 +44,9 @@ _tok::_tok(
 		_position(other._position),
 		_subtype(other._subtype),
 		_type(other._type),
-		_text(other._text)
+		_f_val(other._f_val),
+		_i_val(other._i_val),
+		_s_val(other._s_val)
 {
 	return;
 }
@@ -65,7 +67,9 @@ _tok::operator=(
 		_position = other._position;
 		_subtype = other._subtype;
 		_type = other._type;
-		_text = other._text;
+		_f_val = other._f_val;
+		_i_val = other._i_val;
+		_s_val = other._s_val;
 	}
 
 	return *this;
@@ -74,6 +78,7 @@ _tok::operator=(
 void 
 _tok::ceiling(void)
 {
+	double value = 0.0;
 	std::stringstream ss;
 
 	if(_class_type != CLASS_TOKEN_TYPE_TOKEN) {
@@ -86,7 +91,8 @@ _tok::ceiling(void)
 
 	switch(_type) {
 		case TOKEN_TYPE_FLOAT:
-			ss << (double) std::ceil(to_float());
+			value = std::ceil(_f_val);
+			ss << (double) value;
 			break;
 		case TOKEN_TYPE_INTEGER:
 			break;
@@ -94,7 +100,9 @@ _tok::ceiling(void)
 			THROW_TOK_EXC_W_MESS(_type, TOK_EXC_INVALID_TYPE);
 			break;
 	}
-	_text = ss.str();
+	_f_val = value;
+	_i_val = (long) value;
+	_s_val = ss.str();
 }
 
 void 
@@ -105,12 +113,15 @@ _tok::clear(void)
 	_position = 0;
 	_subtype = INVALID_TYPE;
 	_type = INVALID_TYPE;
-	_text.clear();
+	_f_val = 0.0;
+	_i_val = 0;
+	_s_val.clear();
 }
 
 void 
 _tok::floor(void)
 {
+	double value = 0.0;
 	std::stringstream ss;
 
 	if(_class_type != CLASS_TOKEN_TYPE_TOKEN) {
@@ -123,7 +134,8 @@ _tok::floor(void)
 
 	switch(_type) {
 		case TOKEN_TYPE_FLOAT:
-			ss << (double) std::floor(to_float());
+			value = std::floor(to_float());
+			ss << (double) value;
 			break;
 		case TOKEN_TYPE_INTEGER:
 			break;
@@ -131,7 +143,9 @@ _tok::floor(void)
 			THROW_TOK_EXC_W_MESS(_type, TOK_EXC_INVALID_TYPE);
 			break;
 	}
-	_text = ss.str();
+	_f_val = value;
+	_i_val = (long) value;
+	_s_val = ss.str();
 }
 
 size_t 
@@ -164,15 +178,16 @@ _tok::get_type(void)
 	return _type;
 }
 
-std::string &
+std::string 
 _tok::get_text(void)
 {
-	return _text;
+	return _s_val;
 }
 
 void 
 _tok::negate(void)
 {
+	double value = 0.0;
 	std::stringstream ss;
 
 	if(_class_type != CLASS_TOKEN_TYPE_TOKEN) {
@@ -181,21 +196,48 @@ _tok::negate(void)
 
 	switch(_type) {
 		case TOKEN_TYPE_FLOAT:
-			ss << (double) (to_float() * -1.0);
-			break;
 		case TOKEN_TYPE_INTEGER:
-			ss << (long) (to_integer() * -1);
+			value = to_float() * -1.0;
+			ss << (double) value;
 			break;
 		default:
 			THROW_TOK_EXC_W_MESS(_type, TOK_EXC_INVALID_TYPE);
 			break;
 	}
-	_text = ss.str();
+	_f_val = value;
+	_i_val = (long) value;
+	_s_val = ss.str();
+}
+
+void 
+_tok::randomize(void)
+{
+	long value = 0;
+	std::stringstream ss;
+
+	if(_class_type != CLASS_TOKEN_TYPE_TOKEN) {
+		THROW_TOK_EXC_W_MESS(_class_type, TOK_EXC_INVALID_CLS_TYPE);
+	}
+
+	switch(_type) {
+		case TOKEN_TYPE_FLOAT:
+		case TOKEN_TYPE_INTEGER:
+			value = rand();
+			ss << (long) value;
+			break;
+		default:
+			THROW_TOK_EXC_W_MESS(_type, TOK_EXC_INVALID_TYPE);
+			break;
+	}
+	_f_val = value;
+	_i_val = (long) value;
+	_s_val = ss.str();
 }
 
 void 
 _tok::round(void)
 {
+	double value = 0.0;
 	std::stringstream ss;
 
 	if(_class_type != CLASS_TOKEN_TYPE_TOKEN) {
@@ -208,7 +250,8 @@ _tok::round(void)
 
 	switch(_type) {
 		case TOKEN_TYPE_FLOAT:
-			ss << (double) std::floor(to_float() + 0.5);
+			value = std::floor(to_float() + 0.5);
+			ss << (double) value;
 			break;
 		case TOKEN_TYPE_INTEGER:
 			break;
@@ -216,7 +259,9 @@ _tok::round(void)
 			THROW_TOK_EXC_W_MESS(_type, TOK_EXC_INVALID_TYPE);
 			break;
 	}
-	_text = ss.str();
+	_f_val = value;
+	_i_val = (long) value;
+	_s_val = ss.str();
 }
 
 void 
@@ -271,14 +316,54 @@ _tok::set_type(
 }
 
 void 
-_tok::shift_left(
-	size_t amount
+_tok::set_value(
+	double value
 	)
 {
 	std::stringstream ss;
 
-	ss << (long) (to_integer() << amount);
-	_text = ss.str();
+	ss << (double) value;
+	_f_val = value;
+	_i_val = (long) value;
+	_s_val = ss.str();
+}
+
+void 
+_tok::set_value(
+	long value
+	)
+{
+	std::stringstream ss;
+
+	ss << (long) value;
+	_f_val = value;
+	_i_val = value;
+	_s_val = ss.str();
+}
+
+void 
+_tok::set_value(
+	const std::string value
+	)
+{
+	_f_val = std::atof(value.c_str());
+	_i_val = std::atoi(value.c_str());
+	_s_val = value;
+}
+
+void 
+_tok::shift_left(
+	size_t amount
+	)
+{
+	long value = 0;
+	std::stringstream ss;
+
+	value = to_integer() << amount;
+	ss << (long) value;
+	_f_val = value;
+	_i_val = value;
+	_s_val = ss.str();
 }
 
 void 
@@ -286,10 +371,14 @@ _tok::shift_right(
 	size_t amount
 	)
 {
+	long value = 0;
 	std::stringstream ss;
 
-	ss << (long) (to_integer() >> amount);
-	_text = ss.str();
+	value = to_integer() >> amount;
+	ss << (long) value;
+	_f_val = value;
+	_i_val = value;
+	_s_val = ss.str();
 }
 
 double 
@@ -301,7 +390,7 @@ _tok::to_float(void)
 		THROW_TOK_EXC_W_MESS(to_string(true) << " (" << _class_type << ", " << _type << ")", TOK_EXC_NON_NUMERIC_TYPE);
 	}
 
-	return std::atof(_text.c_str());
+	return _f_val;
 }
 
 long 
@@ -313,7 +402,7 @@ _tok::to_integer(void)
 		THROW_TOK_EXC_W_MESS(to_string(true) << " (" << _class_type << ", " << _type << ")", TOK_EXC_NON_NUMERIC_TYPE);
 	}
 
-	return std::atoi(_text.c_str());
+	return _i_val;
 }
 
 std::string 
@@ -336,12 +425,16 @@ _tok::to_string(
 
 			switch(_type) {
 				case TOKEN_TYPE_FLOAT:
+					ss << " " << _f_val;
+					break;
 				case TOKEN_TYPE_IDENTIFIER:
+					ss << " " << _s_val;
+					break;
 				case TOKEN_TYPE_INTEGER:
-					ss << " " << _text;
+					ss << " " << _i_val;
 					break;
 				case TOKEN_TYPE_VAR_STRING:
-					ss << " \'" << _text << "\'";
+					ss << " \'" << _s_val << "\'";
 					break;
 			}
 

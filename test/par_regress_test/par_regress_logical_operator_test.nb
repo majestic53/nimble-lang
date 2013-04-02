@@ -1,6 +1,7 @@
 # logical operator
 set: a, ceil: b;
 set: a, flr: b;
+set: a, rdm: b;
 set: a, rnd: b;
 set: a, shl: b;
 set: a, shr: b;

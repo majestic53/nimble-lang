@@ -17,6 +17,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <ctime>
 #include <iostream>
 #include <stdexcept>
 #include <vector>
@@ -95,6 +96,7 @@ main(
 	if(argc > MIN_PROMPT_INPUT) {
 		arguments.insert(arguments.begin(), argv + 1, argv + argc);
 	}
+	srand((unsigned int) time(NULL));
 
 	try {
 		load_arguments.push_back(arg(ARG_TYPE_STRING));

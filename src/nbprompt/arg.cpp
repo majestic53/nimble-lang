@@ -160,7 +160,7 @@ _arg::to_token(void)
 	tok result;
 	
 	result.set_as_token(_type == ARG_TYPE_FLOAT ? TOKEN_TYPE_FLOAT : (_type == ARG_TYPE_INTEGER ? TOKEN_TYPE_INTEGER : TOKEN_TYPE_VAR_STRING), INVALID_TYPE);
-	result.get_text() = _text;
+	result.set_value(_text);
 
 	return result;
 }

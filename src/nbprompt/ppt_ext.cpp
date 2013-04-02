@@ -278,7 +278,7 @@ ppt_ext_hdl_load_command(
 
 		for(; i < arguments.size(); ++i) {
 			token.set_as_token(TOKEN_TYPE_VAR_STRING, INVALID_TYPE);
-			token.get_text() = arguments.at(i).get_text();
+			token.set_value(arguments.at(i).get_text());
 			tok_vec.push_back(token);
 		}
 		ppt_exe.initialize(path, tok_vec, true, false);

@@ -144,6 +144,7 @@ enum {
 enum {
 	LOGICAL_OPERATOR_TYPE_CEILING = 0,
 	LOGICAL_OPERATOR_TYPE_FLOOR,
+	LOGICAL_OPERATOR_TYPE_RANDOM,
 	LOGICAL_OPERATOR_TYPE_ROUND,
 	LOGICAL_OPERATOR_TYPE_SHIFT_LEFT,
 	LOGICAL_OPERATOR_TYPE_SHIFT_RIGHT,
@@ -308,7 +309,7 @@ static const std::string ITERATOR_OPERATOR_TYPE_STR[] = {
 };
 
 static const std::string LOGICAL_OPERATOR_TYPE_STR[] = {
-	"ceil", "flr", "rnd", "shl", "shr",
+	"ceil", "flr", "rdm", "rnd", "shl", "shr",
 };
 
 static const std::string OUT_LIST_OPERATOR_TYPE_STR[] = {

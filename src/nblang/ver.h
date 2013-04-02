@@ -24,10 +24,10 @@
  * Language version
  */
 #define LANG_VER_MAJ 0
-#define LANG_VER_MIN 4
+#define LANG_VER_MIN 6
 #define LANG_VER_YR 13
 #define LANG_VER_WW 14
-#define LANG_VER_REV 01
+#define LANG_VER_REV 02
 
 /*
  * Language version strings

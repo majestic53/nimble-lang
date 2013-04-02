@@ -47,7 +47,7 @@ lex_enum_alpha(
 
 		if(IS_TYPE_LB(base, SYMBOL_BASE_TYPE_ALPHA)
 				|| IS_CHAR_LB(base, SYMBOL_UNDERSCORE)) {
-			token.get_text() += base->get();
+			token.set_value(token.get_text() + base->get());
 
 			while(base->has_next()) {
 				base->move_next();
@@ -57,7 +57,7 @@ lex_enum_alpha(
 						&& !IS_CHAR_LB(base, SYMBOL_UNDERSCORE)) {
 					break;
 				}
-				token.get_text() += base->get();
+				token.set_value(token.get_text() + base->get());
 			}
 
 			if(IS_ACCESS_TYPE(token.get_text())) {
@@ -102,7 +102,7 @@ lex_enum_alpha(
 
 			if(!IS_TYPE_T(token, TOKEN_TYPE_IDENTIFIER)) {
 				token.set_as_token(token.get_type(), lang_find_subtype(token.get_text(), token.get_type()));
-				token.get_text().clear();
+				token.set_value(std::string());
 			}
 		} else {
 			TRACE_EVENT("Invalid alpha symbol: " << base->to_string(true), TRACE_TYPE_ERROR);
@@ -128,7 +128,7 @@ lex_enum_number(
 		token.set_as_token(TOKEN_TYPE_INTEGER, INVALID_TYPE);
 
 		if(IS_TYPE_LB(base, SYMBOL_BASE_TYPE_DIGIT)) {
-			token.get_text() += base->get();
+			token.set_value(token.get_text() + base->get());
 
 			while(base->has_next()) {
 				base->move_next();
@@ -136,11 +136,11 @@ lex_enum_number(
 				if(!IS_TYPE_LB(base, SYMBOL_BASE_TYPE_DIGIT)) {
 					break;
 				}
-				token.get_text() += base->get();
+				token.set_value(token.get_text() + base->get());
 			}
 
 			if(IS_CHAR_LB(base, SYMBOL_DECIMAL)) {
-				token.get_text() += base->get();
+				token.set_value(token.get_text() + base->get());
 				has_decimal = true;
 
 				while(base->has_next()) {
@@ -149,7 +149,7 @@ lex_enum_number(
 					if(!IS_TYPE_LB(base, SYMBOL_BASE_TYPE_DIGIT)) {
 						break;
 					}
-					token.get_text() += base->get();
+					token.set_value(token.get_text() + base->get());
 				}
 			}
 		} else {
@@ -201,7 +201,7 @@ lex_enum_symbol(
 								found_end = true;
 								break;
 							}
-							token.get_text() += base->get();
+							token.set_value(token.get_text() + base->get());
 							base->move_next();
 						}
 

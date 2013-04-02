@@ -92,7 +92,7 @@ static const std::string EXE_EVAL_ACTION_STR[] = {
 #define EXE_SET_TOKEN_TYPE(_T_, _TY_, _V_) {\
 	_T_.set_class_type(CLASS_TOKEN_TYPE_TOKEN);\
 	_T_.set_type(_TY_);\
-	_T_.get_text() = _V_;\
+	_T_.set_value(_V_);\
 	}
 
 /*

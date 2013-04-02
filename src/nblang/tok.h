@@ -113,12 +113,17 @@ typedef class _tok {
 		 * Retrieve token text reference
 		 * @return token text reference
 		 */
-		std::string &get_text(void);
+		std::string get_text(void);
 
 		/*
 		 * Negate token value
 		 */
 		void negate(void);
+
+		/*
+		 * Random token value
+		 */
+		void randomize(void);
 
 		/*
 		 * Round token value
@@ -165,6 +170,30 @@ typedef class _tok {
 		 */
 		void set_subtype(
 			size_t subtype
+			);
+
+		/*
+		 * Set value as float
+		 * @param value float value reference
+		 */
+		void set_value(
+			double value
+			);
+
+		/*
+		 * Set value as integer
+		 * @param value integer value reference
+		 */
+		void set_value(
+			long value
+			);
+
+		/*
+		 * Set value as string
+		 * @param value string value reference
+		 */
+		void set_value(
+			const std::string value
 			);
 
 		/* 
@@ -222,9 +251,12 @@ typedef class _tok {
 		size_t _type;
 
 		/*
-		 * Token text
+		 * Token value
 		 */
-		std::string _text;
+		double _f_val;
+		long _i_val;
+		std::string _s_val;
+
 
 } tok, *tok_ptr;
 
