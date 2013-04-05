@@ -31,6 +31,7 @@ typedef _tok tok, *tok_ptr;
 enum {
 	TOK_EXC_INVALID_CLS_TYPE = 0,
 	TOK_EXC_INVALID_TYPE,
+	TOK_EXC_INVALID_VALUE,
 	TOK_EXC_NON_NUMERIC_TYPE,
 };
 
@@ -45,6 +46,7 @@ enum {
 static const std::string TOK_EXC_STR[] = {
 	"Invalid token class type",
 	"Invalid token type",
+	"Invalid token value",
 	"Non-numeric token type",
 };
 

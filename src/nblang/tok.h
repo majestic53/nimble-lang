@@ -122,8 +122,11 @@ typedef class _tok {
 
 		/*
 		 * Random token value
+		 * @param max random range maximum value
 		 */
-		void randomize(void);
+		void randomize(
+			long max
+			);
 
 		/*
 		 * Round token value

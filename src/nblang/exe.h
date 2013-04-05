@@ -164,8 +164,9 @@ typedef class _exe :
 
 		/*
 		 * Evaluate next statement
+		 * @return control signal
 		 */
-		void step(void);
+		size_t step(void);
 
 		/*
 		 * Retrieve string represenation
@@ -210,8 +211,9 @@ typedef class _exe :
 		/*
 		 * Invoke executor evaluation action callback
 		 * @param type action type
+		 * @return control signal
 		 */
-		void _invoke_evaluation_action(
+		size_t _invoke_evaluation_action(
 			size_t type
 			);
 

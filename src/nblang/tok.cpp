@@ -210,7 +210,9 @@ _tok::negate(void)
 }
 
 void 
-_tok::randomize(void)
+_tok::randomize(
+	long max
+	)
 {
 	long value = 0;
 	std::stringstream ss;
@@ -219,10 +221,14 @@ _tok::randomize(void)
 		THROW_TOK_EXC_W_MESS(_class_type, TOK_EXC_INVALID_CLS_TYPE);
 	}
 
+	if(!max) {
+		THROW_TOK_EXC_W_MESS(max, TOK_EXC_INVALID_VALUE);
+	}
+
 	switch(_type) {
 		case TOKEN_TYPE_FLOAT:
 		case TOKEN_TYPE_INTEGER:
-			value = rand();
+			value = rand() % max;
 			ss << (long) value;
 			break;
 		default:

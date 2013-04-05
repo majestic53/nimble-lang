@@ -884,7 +884,7 @@ extern void exe_eval_expression_helper(
 							stack.top().front().get().floor();
 							break;
 						case LOGICAL_OPERATOR_TYPE_RANDOM:
-							stack.top().front().get().randomize();
+							stack.top().front().get().randomize(stack.top().front().get().to_integer());
 							break;
 						case LOGICAL_OPERATOR_TYPE_ROUND:
 							stack.top().front().get().round();
@@ -1547,7 +1547,8 @@ exe_eval_statement(
 	return signal;
 }
 
-extern size_t exe_eval_statement(
+size_t 
+exe_eval_statement(
 	tok_stmt &statement,
 	cont_tree &context,
 	tok_stack &stack,

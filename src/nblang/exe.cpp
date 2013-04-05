@@ -107,17 +107,19 @@ _exe::_invoke_action(
 	TRACE_EVENT("-_exe::_invoke_action", TRACE_TYPE_INFORMATION);
 }
 
-void 
+size_t 
 _exe::_invoke_evaluation_action(
 	size_t type
 	)
 {
 	TRACE_EVENT("+_exe::_invoke_evaluation_action", TRACE_TYPE_INFORMATION);
 
+	size_t signal = EXE_SIG_NONE;
+
 	if(type <= MAX_EXE_EVAL_ACTION_TYPE) {
 
 		if(_eval_actions[type]) {
-			_eval_actions[type](_arguments, this, _scope, _stack);
+			signal = _eval_actions[type](_arguments, this, _scope, _stack);
 		} else {
 			TRACE_EVENT("Executor enumeration action is unallocated: " << EXE_EVAL_ACTION_STRING(type), TRACE_TYPE_ERROR);
 			THROW_EXE_EXC_W_MESS(EXE_EVAL_ACTION_STRING(type), EXE_EXC_UNALLOC_EVAL_ACTION);
@@ -128,6 +130,8 @@ _exe::_invoke_evaluation_action(
 	}
 
 	TRACE_EVENT("-_exe::_invoke_evaluation_action", TRACE_TYPE_INFORMATION);
+
+	return signal;
 }
 
 void 
@@ -150,7 +154,10 @@ _exe::evaluate(void)
 	}
 
 	while(has_next()) {
-		step();
+		
+		if(step() == EXE_SIG_EXIT) {
+			break;
+		}
 	}
 
 	TRACE_EVENT("-_exe::evaluate", TRACE_TYPE_INFORMATION);
@@ -299,23 +306,27 @@ _exe::set_evaluation_action(
 	TRACE_EVENT("-_exe::set_evaluation_action", TRACE_TYPE_INFORMATION);
 }
 
-void 
+size_t 
 _exe::step(void)
 {
 	TRACE_EVENT("+_exe::step", TRACE_TYPE_INFORMATION);
+
+	size_t signal = EXE_SIG_NONE;
 
 	if(IS_CLASS_TYPE_T(par::get().get_root(), CLASS_TOKEN_TYPE_BEGIN)) {
 		par::move_next();
 	}
 
 	if(has_next()) {
-		_invoke_evaluation_action(EXE_EVAL_ACTION_STATEMENT);
+		signal = _invoke_evaluation_action(EXE_EVAL_ACTION_STATEMENT);
 	} else {
 		TRACE_EVENT("Executor has no next statement to step to!", TRACE_TYPE_ERROR);
 		THROW_EXE_EXC(EXE_EXC_NO_NEXT_STATEMENT);
 	}
 
 	TRACE_EVENT("-_exe::step", TRACE_TYPE_INFORMATION);
+
+	return signal;
 }
 
 std::string 

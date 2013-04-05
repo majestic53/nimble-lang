@@ -49,7 +49,10 @@ exe_regress_test_helper(
 		exec.initialize(input, arguments, is_file, true);
 
 		while(exec.has_next()) {
-			exec.step();
+			
+			if(exec.step() == EXE_SIG_EXIT) {
+				break;
+			}
 		}
 	} catch(std::runtime_error &exc) {
 		std::cerr << "------------------------" << std::endl << "Exception: " << exc.what() << std::endl;
