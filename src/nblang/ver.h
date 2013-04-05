@@ -27,7 +27,7 @@
 #define LANG_VER_MIN 6
 #define LANG_VER_YR 13
 #define LANG_VER_WW 14
-#define LANG_VER_REV 02
+#define LANG_VER_REV 03
 
 /*
  * Language version strings

@@ -1061,7 +1061,7 @@ exe_eval_io(
 	std::stringstream ss;
 	size_t child_position = 0;
 	std::string input, filename;
-	bool is_append = false, is_binary = false, is_trunc = false, no_entries = false;
+	bool is_append = false, is_binary = false, is_trunc = false;
 
 	if(!IS_TYPE_T(statement.get(), TOKEN_TYPE_IO_OPERATOR)) {
 		TRACE_EVENT("Invalid io token: " << statement.get().to_string(true), TRACE_TYPE_ERROR);
@@ -1085,7 +1085,6 @@ exe_eval_io(
 				case STREAM_TYPE_FILE:
 				
 					if(statement.get_child_count() == MIN_CHILD_COUNT) {
-						no_entries = true;
 						statement.move_child_front();
 						exe_eval_expression(statement, context, stack);
 						filename = stack.top().front().get().get_text();
@@ -1136,11 +1135,7 @@ exe_eval_io(
 								| (is_trunc ? std::ios::trunc : 0));
 
 						if(file) {
-							if(no_entries) {
-								statement.move_child_front();
-							} else {
-								statement.move_child(IO_OUT_EXPRESSION_CHILD);
-							}
+							statement.move_child(IO_OUT_EXPRESSION_CHILD);
 							exe_eval_expression(statement, context, stack);
 							file << stack.top().front().get().get_text();
 							file.close();
